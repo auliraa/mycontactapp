@@ -34,7 +34,6 @@ fun ContactScreen(viewModel: ContactViewModel) {
     var phone by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
 
-    // Scaffold otomatis menangani area status bar (kamera) dengan baik
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -52,16 +51,16 @@ fun ContactScreen(viewModel: ContactViewModel) {
         }
     ) { innerPadding ->
 
-        // Konten Utama
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding) // Ini agar konten tidak tertutup TopBar
-                .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)) // Background agak abu
+                .padding(innerPadding)
+                .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f))
                 .padding(16.dp)
         ) {
 
-            // --- BAGIAN 1: FORM INPUT (Dibuat dalam Card) ---
+
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -79,7 +78,7 @@ fun ContactScreen(viewModel: ContactViewModel) {
                         color = MaterialTheme.colorScheme.primary
                     )
 
-                    // Input Nama
+
                     CantikTextField(
                         value = name,
                         onValueChange = { name = it },
@@ -87,7 +86,7 @@ fun ContactScreen(viewModel: ContactViewModel) {
                         icon = Icons.Default.Person
                     )
 
-                    // Input Telepon
+
                     CantikTextField(
                         value = phone,
                         onValueChange = { phone = it },
@@ -95,7 +94,7 @@ fun ContactScreen(viewModel: ContactViewModel) {
                         icon = Icons.Default.Phone
                     )
 
-                    // Input Email
+
                     CantikTextField(
                         value = email,
                         onValueChange = { email = it },
@@ -103,7 +102,7 @@ fun ContactScreen(viewModel: ContactViewModel) {
                         icon = Icons.Default.Email
                     )
 
-                    // Tombol Simpan
+
                     Button(
                         onClick = {
                             if (name.isNotEmpty() && phone.isNotEmpty()) {
@@ -125,7 +124,7 @@ fun ContactScreen(viewModel: ContactViewModel) {
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // --- BAGIAN 2: DAFTAR KONTAK ---
+
             Text(
                 "Daftar Teman (${contactList.size})",
                 style = MaterialTheme.typography.titleMedium,
@@ -145,7 +144,7 @@ fun ContactScreen(viewModel: ContactViewModel) {
     }
 }
 
-// Komponen Custom TextField biar rapi
+
 @Composable
 fun CantikTextField(
     value: String,
@@ -168,7 +167,7 @@ fun CantikTextField(
     )
 }
 
-// Item List yang lebih estetik dengan Avatar
+
 @Composable
 fun ContactItemCantik(contact: Contact) {
     Card(
@@ -183,7 +182,7 @@ fun ContactItemCantik(contact: Contact) {
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // 1. Avatar Bulat dengan Inisial
+
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
@@ -192,7 +191,7 @@ fun ContactItemCantik(contact: Contact) {
                     .background(MaterialTheme.colorScheme.primaryContainer)
             ) {
                 Text(
-                    text = contact.name.take(1).uppercase(), // Ambil huruf pertama
+                    text = contact.name.take(1).uppercase(),
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onPrimaryContainer
@@ -201,7 +200,7 @@ fun ContactItemCantik(contact: Contact) {
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            // 2. Info Teks
+
             Column {
                 Text(
                     text = contact.name,

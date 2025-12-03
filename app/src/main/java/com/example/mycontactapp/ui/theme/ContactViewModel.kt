@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class ContactViewModel(private val repository: ContactRepository) : ViewModel() {
 
-    // StateFlow berisi list kontak yang diamati oleh UI [cite: 24]
+
     val contactListState: StateFlow<List<Contact>> = repository.getAllContactsStream()
         .stateIn(
             scope = viewModelScope,
@@ -20,7 +20,6 @@ class ContactViewModel(private val repository: ContactRepository) : ViewModel() 
             initialValue = emptyList()
         )
 
-    // Fungsi untuk menyimpan data ke database [cite: 28]
     fun saveContact(name: String, phone: String, email: String) {
         viewModelScope.launch {
             val newContact = Contact(name = name, phoneNumber = phone, email = email)
@@ -29,7 +28,7 @@ class ContactViewModel(private val repository: ContactRepository) : ViewModel() 
     }
 }
 
-// Factory untuk membuat ViewModel (boilerplate standard)
+
 class ContactViewModelFactory(private val repository: ContactRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ContactViewModel::class.java)) {

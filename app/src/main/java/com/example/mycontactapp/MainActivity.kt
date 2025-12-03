@@ -14,16 +14,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // 1. Setup Database & Repository
         val database = ContactDatabase.getDatabase(this)
         val repository = ContactRepository(database.contactDao())
 
-        // 2. Setup ViewModel Factory
         val viewModelFactory = ContactViewModelFactory(repository)
         val viewModel = ViewModelProvider(this, viewModelFactory)[ContactViewModel::class.java]
 
         setContent {
-            // 3. Tampilkan UI
             ContactScreen(viewModel = viewModel)
         }
     }
