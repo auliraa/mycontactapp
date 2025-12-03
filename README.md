@@ -18,8 +18,7 @@ Here is a preview of the application:
 
 | Main Screen (List) | 
 |:-------------------------:|
-| <img width="1187" height="2513" alt="ui_2" src="https://github.com/user-attachments/assets/422671dc-199d-4f8c-a9d6-9cbd99aca44e" />
-
+| <img width="593" height="1256" alt="ui_3" src="https://github.com/user-attachments/assets/45286a2e-0ba7-44ba-a2d4-991267c66d94" />
 
 
 ## 🛠️ Tech Stack & Architecture
@@ -36,7 +35,7 @@ This project is built using modern Android development standards:
 
 ## 👥 Student Information
 **Project by:**
-* **Name:** AULIRA RAHMI ANUM
+* **Name:** AULIRA | AMELIA | ASTRID
 * **Class:** PAB
 
 ---
